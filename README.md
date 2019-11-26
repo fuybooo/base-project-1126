@@ -73,15 +73,15 @@
     7. 由于后端开发接口不一定全部都提供了，所以，前端项目部署上去之后，可能会出现404。可以通过如下操作解决
         1. 方法一：将所有的请求都设置为静态请求
         ```
-            localStorage.setItem('LF_FE_OPEN_STATIC', '1')
+            localStorage.setItem('BP_FE_OPEN_STATIC', '1')
             // 若要删除此配置，需要执行
-            localStorage.removeItem('LF_FE_OPEN_STATIC', '1')
+            localStorage.removeItem('BP_FE_OPEN_STATIC')
         ```
         2. 方法二：将一部分请求设置为静态请求【注意：两种方法是互斥的】
         ```
             // 比如：若要将以 campus/ 开头 和 以 staff/ 开头的请求设置为静态请求
-            localStorage.setItem('LF_FE_STATIC_INCLUDE', '["campus/", "staff/"]')
+            localStorage.setItem('BP_FE_STATIC_INCLUDE', '["campus/", "staff/"]')
             // 若要删除此配置，需要执行
-            localStorage.removeItem('LF_FE_STATIC_INCLUDE', '1')
+            localStorage.removeItem('BP_FE_STATIC_INCLUDE')
         ```
     8. 启动tomcat之后，浏览器访问地址 协议 + 域名（ip） + 端口  + /login
