@@ -1,0 +1,111 @@
+@import "var";
+
+.primary-color {
+  color: @primary-color;
+}
+
+.black-1 {
+  color: @black-1;
+}
+
+.black-2 {
+  color: @black-2;
+}
+
+.black-3 {
+  color: @black-3;
+}
+
+.black-4 {
+  color: @black-4;
+}
+
+.blue {
+  color: @blue;
+}
+
+.green {
+  color: @green;
+}
+
+.red {
+  color: @red;
+}
+
+.orange {
+  color: @orange;
+}
+
+.page-border {
+  border: 1px solid @black-5;
+  box-shadow: 0 1px 3px 1px @black-5;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  overflow: auto;
+  color: @black-0;
+  background-color: @page-bg;
+  min-height: 450px;
+  min-width: 1440px;
+}
+
+a {
+  color: @primary-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &.link {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    color: @primary-color-hover;
+  }
+
+  &.red {
+    .red;
+
+    &:hover {
+      .red;
+    }
+  }
+
+  &.blue {
+    .blue;
+
+    &:hover {
+      .blue;
+    }
+  }
+
+  &.orange {
+    .orange;
+
+    &:hover {
+      .orange;
+    }
+  }
+
+  &.green {
+    .green;
+
+    &:hover {
+      .green;
+    }
+  }
+
+  &.btn-icon {
+    font-size: 26px;
+  }
+
+  & + & {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,343 @@
+@import "../common/var";
+// 语言选择器
+.lang-setting {
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  top: 20px;
+
+  .el-input__inner {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+
+// 表单中自定义按钮的默认布局
+.default-btn-box {
+  margin-left: 120px;
+}
+
+.base-header-page {
+  & > .page-header {
+    padding: 0;
+    height: auto !important;
+  }
+}
+
+@common-border: 1px solid @box-border;
+.common-border-bottom {
+  border-bottom: @common-border;
+}
+
+.common-border-top {
+  border-top: @common-border;
+}
+
+// 共享样式
+.common-page-content-height {
+  height: e("calc(100% - 2px)");
+}
+
+.common-page-content {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 1px @black-5;
+}
+
+// 通用两栏页面布局样式
+.common-side-page {
+  background-color: @page-bg;
+  height: 100%;
+
+  .common-side-page-left {
+    .common-page-content;
+    .common-page-content-height;
+    // 定义左侧内容的默认样式
+    .page-header.el-header {
+      padding: 6px 24px;
+      border-bottom: 1px solid @box-border;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .only-text {
+      .page-header.el-header {
+        padding: 13px 24px;
+      }
+    }
+
+    .common-side-ul {
+      height: calc(100% - 80px);
+      overflow: auto;
+
+      .common-side-item {
+        height: 46px;
+        line-height: 46px;
+        text-align: center;
+        border-bottom: 1px solid @box-border;
+        position: relative;
+        cursor: pointer;
+
+        &:not(.is-subject).is-active {
+          background-color: @active;
+
+          &:hover {
+            background-color: @active;
+          }
+
+          &::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            width: 4px;
+            background-color: @primary-color;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+        }
+
+        &:not(.is-subject):hover {
+          background-color: @th-bg;
+        }
+      }
+
+      .empty {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: @black-4;
+      }
+    }
+
+    // 对于有子节点的数据样式
+    .common-side-ul.has-sub {
+      .common-side-item {
+        height: 30px;
+        line-height: 30px;
+        text-align: left;
+        border-bottom: none;
+        padding-left: 56px;
+
+        &.is-subject {
+          height: 46px;
+          line-height: 46px;
+          cursor: default;
+          padding-left: 24px;
+          border-top: 1px solid @box-border;
+        }
+
+        .text-icon {
+          position: absolute;
+          left: 24px;
+          top: 5px;
+        }
+
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+
+    // 左侧区域 底部 按钮块
+    .common-side-bottom-box {
+      padding: 20px 24px;
+    }
+  }
+
+  .common-side-page-right {
+    .common-page-content;
+    .common-page-content-height;
+    margin-left: 20px;
+    // 定义右侧内容的默认样式
+
+    .page-header.el-header {
+      border-bottom: 1px solid @box-border;
+      font-size: 16px;
+
+      .common-header-box {
+        padding: 14px 24px;
+      }
+    }
+
+    .no-header-border-bottom {
+      .page-header.el-header {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// 通用上下布局 【查询条件和表格之间有20px间隔的情况】
+.common-search-page {
+  background-color: @page-bg;
+
+  & > .page-main {
+    margin-top: 20px;
+  }
+}
+
+// .common-query 该类名很特殊，查询条件区域使用该类名后，对应的表格将会自动根据该区域的高度计算其应该呈现的高度
+// 通用的查询框
+.common-query {
+  // 设置overflow为inherit之后，该元素会触发bfc，使其计算高度时能够正确计算其子元素的margin值
+  overflow: inherit;
+  padding: 24px 24px 6px 24px;
+  background-color: #fff;
+  border-radius: 4px;
+  // 简单查询框不需要左侧边框和下方阴影
+  &:not(.simple) {
+    border-left: 4px solid @primary-color;
+    box-shadow: 0 1px 3px 1px @black-5;
+  }
+
+  // 简单查询框需要16px 的padding-bottom
+  &.simple {
+    padding-bottom: 16px;
+  }
+
+  // 对于多行的表单，右侧按钮样式变化
+  .common-lines-2 {
+    .btn-box-query {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.common-table-box {
+  background-color: #fff;
+  .common-page-content;
+}
+
+.common-btn-box {
+  padding: 20px 24px;
+
+  &.mini {
+    padding: 15px 24px;
+  }
+}
+
+.common-detail-box {
+  padding: 24px;
+
+  .common-detail-item {
+    display: flex;
+    margin-bottom: 24px;
+
+    .item-label, .item-content {
+    }
+
+    .item-content {
+      margin-left: 20px;
+      color: @black-2;
+    }
+  }
+}
+
+.card-list {
+  .card-box {
+    width: 215px;
+    margin: 20px auto;
+
+    .image {
+      width: 100%;
+      height: 160px;
+      display: block;
+    }
+
+    .card-content {
+      padding: 5px;
+
+      .title {
+        font-size: 16px;
+      }
+
+      .aux {
+        padding-top: 10px;
+        color: @black-4;
+        text-align: right;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.common-panel {
+  .panel-title {
+
+  }
+  .panel-content {
+
+  }
+}
+
+// 正文样式
+.common-text {
+  font-size: 14px;
+  color: @black-2;
+}
+
+/* 签署合同步骤条样式 */
+.contract-steps.el-steps--simple {
+  background-color: #fff;
+  // 线的样式
+  .el-step.is-simple .el-step__arrow {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      height: 1px;
+      transform: none;
+      width: 90%;
+      transform-origin: unset;
+      position: relative;
+      background-color: #e9e9e9;
+    }
+  }
+
+  // 文字
+  .el-step__title.is-finish,
+  .el-step__title.is-wait {
+    color: @black-4;
+  }
+
+  .el-step__title.is-process {
+    color: @black-1;
+  }
+
+  // 图标
+  .el-step.is-simple .el-step__icon {
+    font-size: 32px;
+  }
+
+  .el-step__icon.is-text {
+    border: none;
+    border-radius: 0;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+// 文字类图标
+.text-icon {
+  display: inline-block;
+  border: 1px solid @primary-color;
+  padding: 0 2px;
+  border-radius: 2px;
+  color: @primary-color;
+  line-height: 18px;
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+.common-flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

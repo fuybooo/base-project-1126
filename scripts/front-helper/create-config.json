@@ -1,0 +1,13 @@
+{
+  "module": {
+    "name": "friends",
+    "title": "交友",
+    "baseDir": "src/modules/"
+  },
+  "pages": [
+    {
+      "name": "list",
+      "title": "好友列表"
+    }
+  ]
+}

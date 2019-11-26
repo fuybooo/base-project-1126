@@ -1,0 +1,26 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "tx": "",
+    "zh": "8888888",
+    "name": "Kevin.S",
+    "phone": "13555555555",
+    "loginName": "Kevin.S",
+    "gender": 1,
+    "age": 32,
+    "position": 1,
+    "status": 1,
+    "role": 2,
+    "nowClass": [
+      {
+        "name": "1"
+      }
+    ],
+    "agoClass": [
+      {
+        "name": "1"
+      }
+    ]
+  }
+}

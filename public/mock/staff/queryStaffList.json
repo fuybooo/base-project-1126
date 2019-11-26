@@ -1,0 +1,45 @@
+{
+  "code": 200,
+  "msg": "",
+  "data": {
+    "results": [
+      {
+        "id": "11",
+        "name": "张管",
+        "stuffNo": "2131231223",
+        "phone": "13012345278",
+        "account": "1231213231231313",
+        "sex": 1,
+        "age": "39",
+        "position": "1",
+        "status": 1,
+        "address": "北京市"
+      },
+      {
+        "id": "1",
+        "name": "乐长",
+        "stuffNo": "213123123",
+        "phone": "13012345678",
+        "account": "1231213231231313",
+        "sex": 1,
+        "age": "19",
+        "position": "3",
+        "status": 1,
+        "address": "北京市"
+      },
+      {
+        "id": "2",
+        "name": "解长乐",
+        "stuffNo": "213123123",
+        "phone": "13012345678",
+        "account": "1231213231231313",
+        "sex": 2,
+        "age": "19",
+        "position": "4",
+        "status": 2,
+        "address": "北京市"
+      }
+    ],
+    "total": 83
+  }
+}

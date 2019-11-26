@@ -1,0 +1,31 @@
+@import "../../../assets/less/common/var";
+
+.demo {
+  background-color: #fff;
+}
+
+.demo-page {
+  padding: 20px;
+}
+
+.demo-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.demo-value {
+  &:before {
+    content: '值：';
+    color: @black-4;
+    position: absolute;
+    left: 20px;
+  }
+
+  position: relative;
+  margin: 10px 0;
+  padding: 20px 20px 20px 60px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: @black-4;
+}

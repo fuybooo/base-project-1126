@@ -1,0 +1,17 @@
+# 2019-10-24
+- fns.ts 
+    - 常用的全局方法
+- fns-array.ts 
+    - 操作数组的方法
+- fns-common.ts 
+    - 表单与表格通用的方法
+- fns-dom.ts 
+    - 操作dom的方法
+- fns-form.ts 
+    - 操作表单的方法
+- fns-platform.ts 
+    - 操作平台的方法
+- fns-table.ts 
+    - 操作表格的方法
+- fns-tree.ts 
+    - 操作树的方法

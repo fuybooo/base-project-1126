@@ -1,0 +1,63 @@
+@import "../var";
+
+.form-item-error() {
+  color: #F5222D;
+  &::before {
+    font-family: 'icomoon' !important;
+    content: "\e93d";
+    color: #f5222d;
+    display: inline-block;
+    vertical-align: -1px;
+  }
+}
+
+// 表单样式重置
+// 错误样式
+.el-form-item.is-error {
+  .el-input__inner, .el-range-input {
+    background-color: #FFF1F0;
+  }
+
+  .el-form-item__error {
+    .form-item-error;
+    //color: #F5222D;
+    //&::before {
+    //  font-family: 'icomoon' !important;
+    //  content: "\e93d";
+    //  color: #f5222d;
+    //  display: inline-block;
+    //  vertical-align: -1px;
+    //}
+  }
+}
+
+.el-input-number .el-input__inner {
+  text-align: left;
+}
+
+// radio-input error 提示样式
+.base-form-item-base-radio-input {
+  .el-form-item__error {
+    margin-left: 90px;
+  }
+}
+
+// 模拟表单错误样式
+.el-form-item__error.base-error-tip {
+  .form-item-error;
+
+  &::before {
+    padding-right: 4px;
+  }
+}
+
+.base-error-tip-error-input {
+  .el-input__inner {
+    border-color: #f56c6c;
+    background-color: #FFF1F0;
+  }
+}
+
+.el-form-item__label {
+  color: @black-1;
+}

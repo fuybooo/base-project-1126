@@ -1,0 +1,562 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../../fonts/icomoon.eot?fm5g45');
+  src: url('../../fonts/icomoon.eot?fm5g45#iefix') format('embedded-opentype'),
+  url('../../fonts/icomoon.ttf?fm5g45') format('truetype'),
+  url('../../fonts/icomoon.woff?fm5g45') format('woff'),
+  url('../../fonts/icomoon.svg?fm5g45#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="yygf-"], [class*=" yygf-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yygf-otherstext .path1:before {
+  content: "\e951";
+  color: rgb(255, 227, 219);
+}
+
+.yygf-otherstext .path2:before {
+  content: "\e952";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-otherstext .path3:before {
+  content: "\e953";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-babygendertext .path1:before {
+  content: "\e954";
+  color: rgb(255, 227, 219);
+}
+
+.yygf-babygendertext .path2:before {
+  content: "\e955";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-babygendertext .path3:before {
+  content: "\e956";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-babyagetext .path1:before {
+  content: "\e957";
+  color: rgb(255, 227, 219);
+}
+
+.yygf-babyagetext .path2:before {
+  content: "\e958";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-babyagetext .path3:before {
+  content: "\e959";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-phonenumbertext .path1:before {
+  content: "\e95a";
+  color: rgb(255, 227, 219);
+}
+
+.yygf-phonenumbertext .path2:before {
+  content: "\e95b";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-phonenumbertext .path3:before {
+  content: "\e95c";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-phonenumbertext .path4:before {
+  content: "\e95d";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-nametext .path1:before {
+  content: "\e95e";
+  color: rgb(254, 144, 112);
+}
+
+.yygf-nametext .path2:before {
+  content: "\e95f";
+  margin-left: -1em;
+  color: rgb(255, 227, 219);
+}
+
+.yygf-nametext .path3:before {
+  content: "\e960";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-nametext .path4:before {
+  content: "\e961";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-nametext .path5:before {
+  content: "\e962";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-gogowrong:before {
+  content: "\e94f";
+  color: #fff;
+}
+
+.yygf-gogoright:before {
+  content: "\e950";
+  color: #fff;
+}
+
+.yygf-tobectn1 .path1:before {
+  content: "\e93e";
+  color: rgb(0, 0, 0);
+  opacity: 0.15;
+}
+
+.yygf-tobectn1 .path2:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.25;
+}
+
+.yygf-tobectn2 .path1:before {
+  content: "\e940";
+  color: rgb(0, 0, 0);
+  opacity: 0.15;
+}
+
+.yygf-tobectn2 .path2:before {
+  content: "\e941";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.25;
+}
+
+.yygf-tobectn3 .path1:before {
+  content: "\e942";
+  color: rgb(0, 0, 0);
+  opacity: 0.15;
+}
+
+.yygf-tobectn3 .path2:before {
+  content: "\e943";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.25;
+}
+
+.yygf-tobectn4 .path1:before {
+  content: "\e944";
+  color: rgb(0, 0, 0);
+  opacity: 0.15;
+}
+
+.yygf-tobectn4 .path2:before {
+  content: "\e945";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.25;
+}
+
+.yygf-tobeno3:before {
+  content: "\e946";
+  color: #fe9070;
+}
+
+.yygf-tobeno4:before {
+  content: "\e947";
+  color: #fe9070;
+}
+
+.yygf-tobeno2:before {
+  content: "\e948";
+  color: #fe9070;
+}
+
+.yygf-tobeno1:before {
+  content: "\e949";
+  color: #fe9070;
+}
+
+.yygf-rightdone:before {
+  content: "\e94a";
+  color: #fe9070;
+}
+
+.yygf-unionpay .path1:before {
+  content: "\e94b";
+  color: rgb(230, 0, 18);
+}
+
+.yygf-unionpay .path2:before {
+  content: "\e94c";
+  margin-left: -1.5654296875em;
+  color: rgb(0, 80, 142);
+}
+
+.yygf-unionpay .path3:before {
+  content: "\e94d";
+  margin-left: -1.5654296875em;
+  color: rgb(0, 144, 140);
+}
+
+.yygf-unionpay .path4:before {
+  content: "\e94e";
+  margin-left: -1.5654296875em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-passwordwarning:before {
+  content: "\e93d";
+  color: #f5222d;
+}
+
+.yygf-namewrong .path1:before {
+  content: "\e900";
+  color: rgb(229, 229, 229);
+}
+
+.yygf-namewrong .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(183, 183, 183);
+}
+
+.yygf-nameright .path1:before {
+  content: "\e902";
+  color: rgb(216, 216, 216);
+  opacity: 0.65;
+}
+
+.yygf-nameright .path2:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.2;
+}
+
+.yygf-namedit .path1:before {
+  content: "\e904";
+  color: rgb(97, 97, 97);
+}
+
+.yygf-namedit .path2:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: rgb(255, 152, 19);
+}
+
+.yygf-passwordunsee:before {
+  content: "\e906";
+  color: #bfb4b3;
+}
+
+.yygf-passwordsee .path1:before {
+  content: "\e907";
+  color: rgb(0, 0, 0);
+  opacity: 0.2501;
+}
+
+.yygf-passwordsee .path2:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-passwordsee .path3:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-passwordsee .path4:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-password:before {
+  content: "\e90b";
+  color: #bfbfbf;
+}
+
+.yygf-user:before {
+  content: "\e90c";
+  color: #bfbfbf;
+}
+
+.yygf-morepart .path1:before {
+  content: "\e90d";
+  color: rgb(191, 191, 191);
+}
+
+.yygf-morepart .path2:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+  opacity: 0.4225;
+}
+
+.yygf-addicon:before {
+  content: "\e90f";
+  color: #fe9070;
+}
+
+.yygf-nomessage:before {
+  content: "\e910";
+  color: #39475b;
+}
+
+.yygf-message .path1:before {
+  content: "\e911";
+  color: rgb(57, 71, 91);
+}
+
+.yygf-message .path2:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(57, 71, 91);
+}
+
+.yygf-message .path3:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(57, 71, 91);
+}
+
+.yygf-message .path4:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-message .path5:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(254, 144, 112);
+}
+
+.yygf-unchosenbtm:before {
+  content: "\e916";
+}
+
+.yygf-unchosen:before {
+  content: "\e917";
+  color: #d4d4d4;
+}
+
+.yygf-radiochosen:before {
+  content: "\e918";
+  color: #fe9070;
+}
+
+.yygf-radiounchosen:before {
+  content: "\e919";
+  color: #d9d9d9;
+}
+
+.yygf-PDFfile:before {
+  content: "\e91a";
+  color: #999;
+}
+
+.yygf-moreyinfor:before {
+  content: "\e91b";
+  color: #bfbfbf;
+}
+
+.yygf-alipay:before {
+  content: "\e91c";
+  color: #43aaed;
+}
+
+.yygf-wechat:before {
+  content: "\e91d";
+  color: #09bb07;
+}
+
+.yygf-money:before {
+  content: "\e91e";
+  color: #fecc00;
+}
+
+.yygf-update:before {
+  content: "\e91f";
+}
+
+.yygf-playbtm .path1:before {
+  content: "\e920";
+  color: rgb(63, 63, 63);
+}
+
+.yygf-playbtm .path2:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+
+.yygf-wordfile:before {
+  content: "\e922";
+  color: #b4b4b5;
+}
+
+.yygf-calendar:before {
+  content: "\e923";
+  color: #bfbfbf;
+}
+
+.yygf-chosen:before {
+  content: "\e924";
+  color: #fe9070;
+}
+
+.yygf-allchose:before {
+  content: "\e925";
+  color: #fe9070;
+}
+
+.yygf-chosenbtm:before {
+  content: "\e926";
+  color: #52c41a;
+}
+
+.yygf-deleteoption:before {
+  content: "\e927";
+  color: #c0c4cc;
+}
+
+.yygf-letitgo:before {
+  content: "\e928";
+}
+
+.yygf-operation:before {
+  content: "\e929";
+  color: #a6a6a6;
+}
+
+.yygf-wtf:before {
+  content: "\e92a";
+  color: #faad14;
+}
+
+.yygf-sorting:before {
+  content: "\e92b";
+  color: #bfbfbf;
+}
+
+.yygf-moreandmore:before {
+  content: "\e92c";
+}
+
+.yygf-editting:before {
+  content: "\e92d";
+  color: #fe9070;
+}
+
+.yygf-searcher:before {
+  content: "\e92e";
+  color: #bababa;
+}
+
+.yygf-omg:before {
+  content: "\e92f";
+  color: #f5222d;
+}
+
+.yygf-bingo:before {
+  content: "\e930";
+  color: #52c41a;
+}
+
+.yygf-close:before {
+  content: "\e931";
+  color: #bfbfbf;
+}
+
+.yygf-photoplus:before {
+  content: "\e932";
+  color: #898989;
+}
+
+.yygf-moving:before {
+  content: "\e933";
+  color: #585858;
+}
+
+.yygf-warnning:before {
+  content: "\e934";
+  color: #fecc00;
+}
+
+.yygf-nextbtm:before {
+  content: "\e935";
+  color: #d9d9d9;
+}
+
+.yygf-unpublish:before {
+  content: "\e936";
+  color: #d9d9d9;
+}
+
+.yygf-publish:before {
+  content: "\e937";
+  color: #fe9070;
+}
+
+.yygf-deleter .path1:before {
+  content: "\e938";
+  color: rgb(255, 102, 40);
+}
+
+.yygf-deleter .path2:before {
+  content: "\e939";
+  margin-left: -1em;
+  color: rgb(255, 104, 32);
+}
+
+.yygf-deleter .path3:before {
+  content: "\e93a";
+  margin-left: -1em;
+  color: rgb(255, 102, 40);
+}
+
+.yygf-screening:before {
+  content: "\e93b";
+  color: #bfbfbf;
+}
+
+.yygf-order:before {
+  content: "\e93c";
+}

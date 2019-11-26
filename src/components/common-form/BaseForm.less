@@ -1,0 +1,42 @@
+/* base form less */
+.el-form-item--small.base-form-item {
+  .base-form-control:not(.base-form-control-fixed-height) {
+    height: 32px;
+  }
+
+  .el-rate.base-form-control.base-form-control-rate {
+    line-height: 44px;
+  }
+
+  // 单选框需要特殊高度
+  .base-form-control-radio {
+    height: 33px;
+    line-height: 40px;
+  }
+
+  .base-form-control-slider {
+    margin-left: 10px;
+  }
+
+  .base-from-item-textarea {
+    margin-bottom: 0;
+    padding-bottom: 18px;
+  }
+
+  .el-date-editor.el-input.base-form-control-date,
+  .el-date-editor.el-input__inner.base-form-control-date,
+  .base-form-control-select,
+  .base-form-control-base-remote-select .el-select,
+  .base-form-control-number,
+  .base-form-control-select-multiple,
+  .base-form-control-cascader {
+    width: 100%;
+  }
+
+  // 分隔元素
+  &.base-form-item-divide {
+    display: block;
+    margin-bottom: 0;
+    height: 0;
+  }
+}

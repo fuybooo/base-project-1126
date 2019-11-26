@@ -1,0 +1,54 @@
+@import "../../assets/less/common/var";
+
+.base-table-wrap {
+  .base-table {
+
+    .el-button.el-button--small {
+      padding: 4px 10px;
+    }
+
+    tr.remember-row td:first-child {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        height: 100%;
+        width: 3px;
+        background-color: @primary-color;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    &.el-table .cell {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+  }
+
+  .base-pagination {
+    margin-top: 10px;
+    text-align: center;
+
+    &.el-pagination.is-background .el-pager li:not(.disabled) {
+      &:hover {
+        color: @black-2;
+      }
+
+      &.active:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .el-table__column-filter-trigger > .el-icon-arrow-down {
+    font-family: 'icomoon' !important;
+
+    &::before {
+      content: "\e93b";
+      color: #bfbfbf;
+    }
+  }
+}

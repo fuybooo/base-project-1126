@@ -1,0 +1,47 @@
+@import "../var";
+
+@dp: #82D8B1;
+.dp-button {
+  background-color: @dp;
+  border-color: @dp;
+  color: #fff;
+
+  &:hover {
+    background-color: @dp;
+    border-color: @dp;
+    color: #fff;
+  }
+}
+
+.el-button {
+  font-weight: 400;
+  vertical-align: inherit; // 多个 button 在一行显示时，父元素的高度会加 1 ，加上此属性可以解决该问题
+  // 自定义按钮样式 dialog-primary
+  &.el-button--dp {
+    .dp-button;
+  }
+
+  // 默认高亮边框的按钮
+  &.el-button--border {
+    border-color: @primary-color;
+    color: @primary-color;
+  }
+
+  // 有背景色的按钮
+  &.el-button--bg {
+    background-color: @primary-color-button-bg;
+    border-color: @primary-color;
+    color: @primary-color;
+    // hover 样式暂无
+  }
+}
+
+.el-message-box__btns {
+  .el-button--primary {
+    .dp-button;
+  }
+}
+
+.el-button.mini {
+  padding: 7px 8px;
+}

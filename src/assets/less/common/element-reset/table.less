@@ -1,0 +1,75 @@
+@import "../var";
+// 默认表格样式
+.base-table-wrap {
+  .el-table {
+    td {
+      //padding: 10px 0;
+      height: 50px;
+    }
+
+    th, tr, td, .el-button {
+      font-size: 16px;
+    }
+  }
+}
+
+// 无边框的表格
+.no-border {
+  .el-table th.is-leaf,
+  .el-table td {
+    border-bottom: none;
+  }
+
+  .el-table::before {
+    display: none;
+  }
+}
+
+// 页面通用表格样式
+.common-page-table {
+  .el-table__fixed::before, .el-table__fixed-right::before {
+    display: none;
+  }
+
+  .el-table {
+    border-left: none;
+    border-top: none;
+
+    &::after {
+      display: none;
+    }
+
+    &::before {
+      display: none;
+    }
+
+    td, th {
+      border-right: none;
+    }
+
+    th {
+      background-color: @th-bg;
+      height: 54px;
+      color: @black-1;
+    }
+
+    td {
+      height: 70px;
+      color: @black-2;
+    }
+  }
+}
+
+.disabled-table {
+  .el-table {
+    td {
+      color: @black-4;
+    }
+  }
+}
+
+.img-table {
+  .el-table .cell {
+    line-height: initial;
+  }
+}

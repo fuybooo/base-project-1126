@@ -1,0 +1,33 @@
+{
+  "module": {
+    "name": "system",
+    "title": "系统管理",
+    "baseDir": "src/modules/"
+  },
+  "pages": [
+    {
+      "name": "user",
+      "title": "用户管理"
+    },
+    {
+      "name": "role",
+      "title": "角色管理"
+    },
+    {
+      "name": "auth",
+      "title": "权限管理"
+    },
+    {
+      "name": "organization",
+      "title": "组织管理"
+    },
+    {
+      "name": "menu",
+      "title": "菜单管理"
+    },
+    {
+      "name": "dictionary",
+      "title": "字典管理"
+    }
+  ]
+}

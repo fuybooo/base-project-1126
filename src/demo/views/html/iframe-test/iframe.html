@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>Document</title>
+</head>
+<body>
+<button id="btn">iframe</button>
+<script>
+  function getUrlParams() {
+    return window.location.search.slice(1).split('&').map(item => ({ [item.split('=')[0]]: item.split('=')[1] })).reduce((p, c) => ({ ...p, ...c }), {})
+  }
+
+  document.getElementById('btn').addEventListener('click', function () {
+    // console.log('click:btn')
+    // console.log('click:btnparams:', getUrlParams(window.location.search))
+    window.parent.postMessage({
+      name: 'postMessage iframe name',
+      type: 'postMessage iframe type',
+      from: 'postMessage iframe from',
+    }, 'http://localhost:4001')
+  })
+  window.addEventListener('message', (event) => {
+    // console.log('iframe:', event)
+    document.getElementById('btn').click()
+  }, false)
+</script>
+</body>
+</html>

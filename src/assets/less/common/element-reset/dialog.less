@@ -1,0 +1,37 @@
+@import "../var";
+
+.base-dialog {
+  .el-dialog__header {
+    border-bottom: 1px solid @box-border;
+  }
+
+  .el-dialog__body {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .el-dialog__footer {
+    border-top: 1px solid @box-border;
+    padding-bottom: 10px;
+
+    .el-button {
+      padding: 8px 20px;
+    }
+  }
+
+  &.confirm-dialog {
+    .el-dialog__header {
+      border-bottom: none;
+      padding: 15px 15px 10px 15px;
+    }
+
+    .el-dialog__body {
+      padding: 0;
+    }
+
+    .el-dialog__footer {
+      border-top: none;
+      padding-bottom: 10px;
+    }
+  }
+}

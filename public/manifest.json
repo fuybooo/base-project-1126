@@ -1,0 +1,10 @@
+{
+  "name": "base-project-1126",
+  "short_name": "base-project-1126",
+  "icons": [
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4DBA87"
+}
