@@ -17,6 +17,9 @@ import RouterParams from '@/demo/views/router-params/RouterParams.vue'
 import ButtonDemo from '@/demo/views/button/Button.vue'
 import RemoteSelectDemo from '@/demo/views/remote-select/RemoteSelectDemo.vue'
 import BaseLayoutDemo from '@/demo/views/layout/base-layout-demo.vue'
+import WangeditorDemo from '@/demo/views/wangeditor/WangeditorDemo.vue'
+import ChartsDemo from '@/demo/views/charts/ChartsDemo.vue'
+import AddressDemo from '@/demo/views/address/Address.vue'
 
 const demoRouter: ProRouteConfig = {
   path: '/demo',
@@ -151,6 +154,30 @@ const demoRouter: ProRouteConfig = {
       component: BaseLayoutDemo,
       meta: {
         title: '布局示例',
+      },
+    },
+    {
+      path: 'wangeditor',
+      name: 'demo-wangeditor',
+      component: WangeditorDemo,
+      meta: {
+        title: 'wangeditor示例',
+      },
+    },
+    {
+      path: 'charts',
+      name: 'demo-charts',
+      component: ChartsDemo,
+      meta: {
+        title: 'charts示例',
+      },
+    },
+    {
+      path: 'address',
+      name: 'demo-address',
+      component: AddressDemo,
+      meta: {
+        title: 'address示例',
       },
     },
   ],

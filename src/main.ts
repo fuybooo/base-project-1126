@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import ECharts from 'vue-echarts/components/ECharts.vue'
 import './assets/less/common/element-variable.scss'
 import './assets/less/common/index.less'
 import './assets/less/project/index.less'
@@ -15,9 +16,8 @@ import '@/components/index'
 // 导入业务方法
 import '@/util/project/biz/index'
 // tslint:disable-next-line:no-var-requires
-Vue.use(ElementUI, {
-  zIndex: 3000,
-})
+Vue.use(ElementUI, {zIndex: 3000})
+Vue.component('v-chart', ECharts)
 Vue.config.productionTip = false
 window._vueInstance_ = new Vue({
   i18n,

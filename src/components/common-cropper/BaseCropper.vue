@@ -117,6 +117,7 @@
     public delImg () {
       (this.$refs.fileInput as any).value = ''
       this.cropperResult = ''
+      this.$emit('del')
       this.$emit('input', '')
       this.$emit('change', '')
     }
