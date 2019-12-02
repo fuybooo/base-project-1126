@@ -4,11 +4,12 @@
       <span class="black-2">{{ localViewValue }}</span>
     </template>
     <!--    option 中的 key 最好不要使用 (item, index) in options 中的index作为key 否则，可能会出现难以控制的bug-->
-    <!--    比如：出现bug，当搜索完成后，有概率出现搜索关键字被清空的bug-->
+    <!--    比如：出现bug，当搜索完成后，有时候出现搜索关键字被清空的bug-->
     <template v-else>
       <el-select
         :disabled="disabled"
         :filter-method="doFilterMethod"
+        :loading="loading"
         :remote-method="doRemoteMethod"
         @change="changeValue"
         v-bind="localProps"
@@ -29,34 +30,64 @@
   import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
   import { filterMethod, getConfig, getParams, getUrl } from './remote.plugin'
   import { HttpRes, Pattern } from '@/models/common/models'
-  import { composeList } from '@/util/common/fns/fns-array'
-  import pinyin from 'pinyin'
+  import { getPy } from '@/util/common/fns/fns'
 
   @Component({})
   export default class BaseRemoteSelect extends Vue {
-    @Prop({ default () { return {} } }) public props!: any
-    @Prop({ default () { return '' }, type: [ Array, String, Number, Object ] }) public value!: any
-    @Prop({ default () { return {} } }) public fixedParams!: any
-    @Prop({ default () { return {} } }) public searchSingleFixedParams!: any
-    @Prop({ default () { return '' } }) public url!: any
-    @Prop({ default () { return '' } }) public searchSingleUrl!: any
-    @Prop({ default: 'create' }) public pattern!: Pattern
-    @Prop({ default: 50, type: Number }) public pageSize!: any
-    @Prop({ default: '', type: String }) public type!: string
-    @Prop({ default: '', type: String }) public placeholder!: string
-    @Prop({ default: 'name', type: String }) public searchKey!: string
-    @Prop({ default: 'name', type: String }) public labelKey!: string
-    @Prop({ default: 'id', type: String }) public valueKey!: string
-    @Prop({ type: Function }) public filterMethod!: any
-    @Prop({ type: Function }) public remoteMethod!: any
-    @Prop({ type: Function }) public afterSearch!: any
-    @Prop({ type: Function }) public labelFormatter!: any
-    @Prop({ default: false, type: Boolean }) public disabled!: boolean
-    @Prop({ default: true, type: Boolean }) public searchAll!: boolean
-    @Prop({ default: false, type: Boolean }) public objValue!: boolean
-    @Prop({ default: false, type: Boolean }) public multiple!: boolean
-    @Prop({ default: true, type: Boolean }) public searchDefault!: boolean
-    @Prop({ default: '' }) public viewValue!: string // 当multiple为true时，viewValue不生效
+    @Prop({ default () { return {} } })
+    public props!: any
+    @Prop({ default () { return '' }, type: [ Array, String, Number, Object ] })
+    public value!: any
+    @Prop({ default () { return {} } })
+    public fixedParams!: any
+    @Prop({ default () { return {} } })
+    public searchSingleFixedParams!: any
+    @Prop({ default () { return '' }, type: [ Object, String ] })
+    public url!: any
+    @Prop({ default () { return '' }, type: [ Object, String ] })
+    public searchSingleUrl!: any
+    @Prop({ default: 'create' })
+    public pattern!: Pattern
+    @Prop({ default: 50, type: Number })
+    public pageSize!: any
+    @Prop({ default: '', type: String })
+    public type!: string
+    @Prop({ default: '', type: String })
+    public placeholder!: string
+    @Prop({ default: 'name', type: String })
+    public searchKey!: string
+    @Prop({ default: 'name', type: String })
+    public labelKey!: string
+    @Prop({ default: 'id', type: String })
+    public valueKey!: string
+    @Prop({ type: Function })
+    public filterMethod!: any
+    @Prop({ type: Function })
+    public remoteMethod!: any
+    @Prop({ type: Function })
+    public afterSearch!: any
+    @Prop({ type: Function })
+    public labelFormatter!: any
+    @Prop({ default: false, type: Boolean })
+    public disabled!: boolean
+    @Prop({ default: true, type: Boolean })
+    public searchAll!: boolean // 是否查询所有数据
+    @Prop({ default: false, type: Boolean })
+    public showAll!: boolean // 是否显示 "全部" 选项
+    @Prop({ default: false, type: Boolean })
+    public objValue!: boolean
+    @Prop({ default: false, type: Boolean })
+    public multiple!: boolean
+    @Prop({ default: true, type: Boolean })
+    public searchDefault!: boolean
+    @Prop({ default: '' })
+    public viewValue!: string // 当multiple为true时，viewValue不生效
+    @Prop({ default: false, type: Boolean })
+    public useCache!: boolean
+    // 延迟发送请求，使用场景：在一个页面要显示多个相同的下拉框时，可以使用缓存实现，少发请求的效果
+    @Prop({ default: 0, type: Number })
+    public delay!: number
+    public loading = false
     public localViewValue: any = this.viewValue
     public localValue: any = this.value
     public originList: any[] = []
@@ -88,7 +119,10 @@
 
     public created () {
       if (this.searchDefault) {
-        this.search()
+        this.loading = true
+        setTimeout(() => {
+          this.search()
+        }, this.delay)
       }
     }
 
@@ -124,20 +158,23 @@
     }
 
     public search (query?: string) {
-      this.$req(getUrl.bind(this)(), getParams.bind(this)(query)).then((res: HttpRes) => {
+      const url = getUrl.bind(this)()
+      const params = getParams.bind(this)(query)
+      this.$req(url, params, this.useCache).then((res: HttpRes) => {
+        // if (this.useCache) {
+        //   this.$store.commit(setCache, {
+        //     url: reqGetUrl(url).url,
+        //     params,
+        //     result: res,
+        //   })
+        // }
+        this.loading = false
         if (res.code === 200) {
           const config = getConfig.bind(this)()
-          this.options = this.originList = this.searchAll ? res.data.results.map((item: any) => ({
+          this.options = this.originList = config.handleOptions(this.searchAll ? res.data.results.map((item: any) => ({
             ...item,
-            pinyinNormal: composeList(pinyin(item[config.labelKey || this.labelKey], {
-              style: pinyin.STYLE_NORMAL,
-              heteronym: true,
-            })),
-            pinyinFirstLetter: composeList(pinyin(item[config.labelKey || this.labelKey], {
-              style: pinyin.STYLE_FIRST_LETTER,
-              heteronym: true,
-            })),
-          })) : res.data.results
+            ...getPy(item[config.labelKey || this.labelKey]),
+          })) : res.data.results)
           if (this.afterSearch) {
             this.afterSearch(res.data.results)
           }

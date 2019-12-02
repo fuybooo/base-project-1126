@@ -7,10 +7,8 @@
 <script lang="ts">
   import { Component, Vue, Watch } from 'vue-property-decorator'
   import { ProRouteConfig } from '@/models/project/route/route.model'
-  import { debounce, guid, lg } from '@/util/common/fns/fns'
-  import { setMenus } from '@/stores/mutation-types'
-  import { getMenusByMenuFlag, getDefaultMenus } from '@/components/common-menu/menu.fn'
-  import { KEY_MENU_FLAG } from '@/models/project/local-storage-keys/keys'
+  import { debounce, guid } from '@/util/common/fns/fns'
+  import { getDefaultMenus } from '@/components/common-menu/menu.fn'
 
   @Component({})
   export default class MainHeader extends Vue {

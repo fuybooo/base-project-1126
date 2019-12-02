@@ -1,38 +1,40 @@
 <template>
   <base-flex class="p0i" fixed="before" fixedWidth="320px">
     <el-cascader
-      slot="fixed"
-      class="w"
-      v-model="address.area"
-      :options="addressOption"
-      filterable
-      clearable
       :disabled="disabled"
       :filter-method="filterMethod"
+      :options="addressOption"
       :placeholder="selectPlaceholder"
       @change="changeSelect"
+      class="w"
+      clearable
+      filterable
+      slot="fixed"
+      v-model="address.area"
     ></el-cascader>
     <el-input :disabled="disabled"
-              class="ml10"
               @change="changeInput"
+              class="ml10"
               clearable
-              v-model="address.detail"
-              placeholder="请输入详细地址，如：xxx街道xxx小区xxx单元xxx室"></el-input>
+              placeholder="请输入详细地址，如：xxx街道xxx小区xxx单元xxx室"
+              v-model="address.detail"></el-input>
   </base-flex>
 </template>
 
 <script lang="ts">
   import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+
   const addressList = require('../../../public/data/area/area-data.json')
 
   @Component({})
   export default class BaseAddress extends Vue {
-    @Prop({default () { return {} }, type: Object}) public value!: any
-    @Prop({default: '请输入关键字搜索'}) public selectPlaceholder!: string
-    @Prop({default: false, type: Boolean}) public disabled!: boolean
+    @Prop({ default () { return {} }, type: Object }) public value!: any
+    @Prop({ default: '请输入关键字搜索' }) public selectPlaceholder!: string
+    @Prop({ default: false, type: Boolean }) public disabled!: boolean
     public address = this.value
     public addressOption = addressList
-    @Watch('value', {immediate: true})
+
+    @Watch('value', { immediate: true })
     public watchValue (val: any) {
       const address = {
         detail: '',
@@ -59,8 +61,9 @@
       }
       this.address = address
     }
+
     public getAreaObj = (areaList: any[]) => {
-      let res = {
+      const res = {
         provinceCode: '',
         provinceName: '',
         cityCode: '',
@@ -85,18 +88,21 @@
       }
       return res
     }
+
     public created () {
-      console.log(this.address, '组件内：created')
     }
+
     public changeSelect (val: any) {
       this.address.areaObj = this.getAreaObj(val)
       this.$emit('input', this.address)
       this.$emit('change', this.address)
     }
+
     public changeInput (val: any) {
       this.$emit('input', this.address)
       this.$emit('change', this.address)
     }
+
     public filterMethod (node: any, keyword: any) {
       return node.data.label.includes(keyword)
         || node.data.pinyinNormal.some((item: any) => item.includes(keyword))

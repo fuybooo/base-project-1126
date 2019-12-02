@@ -13,13 +13,18 @@ interface VueEvent {
   $emit (event: string, ...args: any[]): this
 }
 
+interface Config {
+  baseURL: string
+  uploadUrl: string
+}
+
 declare module 'vue/types/vue' {
   // 需要扩展的属性
   
   interface Vue {
     // 自定义vue实例属性
     readonly $urls: Urls
-    readonly $req: (url: urlType, data?: any, method?: string, axiosInstance?: AxiosInstance) => Promise<any>
+    readonly $req: (url: urlType, data?: any, useCache?: boolean, method?: string, axiosInstance?: AxiosInstance) => Promise<any>
     // 自定义提示方法
     readonly $error: (message?: string, title?: string) => void
     readonly $success: (message?: string, title?: string) => void
@@ -28,7 +33,7 @@ declare module 'vue/types/vue' {
     readonly $event: GlobalEvent
     readonly $ws: WebSocket
     readonly $getUser: () => User
-    readonly $fileUrl: string
+    readonly $config: Config
   }
 }
 

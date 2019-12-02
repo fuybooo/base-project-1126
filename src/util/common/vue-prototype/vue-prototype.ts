@@ -33,4 +33,4 @@ Vue.prototype.$tip = debounce((res: HttpRes) => {
 //   })()
 // }
 // 文件路径
-Vue.prototype.$fileUrl = config.fileUrl
+Vue.prototype.$config = config

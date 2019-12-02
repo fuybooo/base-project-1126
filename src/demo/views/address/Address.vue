@@ -5,7 +5,7 @@
     <div class="demo-box">
       <div class="demo-line">
         <p>使用场景：只是测试用的示例，很少会单独用</p>
-        <base-address v-model="address" @change="changeAddress"></base-address>
+        <base-address @change="changeAddress" v-model="address"></base-address>
       </div>
     </div>
     <h3>2. 表单用法</h3>
@@ -14,10 +14,10 @@
         <p>使用场景：在表单中使用 回显</p>
         <p class="black-4">特点：赋值时，必须按照组件接收的格式赋值</p>
         <base-form
-          ref="form"
           :inline="false"
           :schema="schema"
           is-row
+          ref="form"
           v-model="form">
         </base-form>
         <div class="demo-btn-box">
@@ -43,10 +43,9 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { Schema } from '@/components/common-form/form.model'
-  import { fb, requiredRuleProp } from '@/util/common/fns/fns-form'
-  import { formatAddress, addressRequiredRuleProp } from '@/components/common-address/address.model';
+  import { fb } from '@/util/common/fns/fns-form'
+  import { addressRequiredRuleProp, formatAddress } from '@/components/common-address/address.model'
   import { setProperty } from '@/util/common/fns/fns-common'
-  import { getProp } from '@/util/common/fns/fns'
 
   @Component({})
   export default class Address extends Vue {
@@ -60,7 +59,7 @@
           disabled: false,
         },
         ...addressRequiredRuleProp,
-      }
+      },
     ]
     public schema2: Schema[] = [
       {
@@ -71,10 +70,11 @@
           return formatAddress(value)
         },
         pattern: 'view',
-      }
+      },
     ]
     public form = fb(this.schema)
     public form2 = fb(this.schema2)
+
     public created () {
       // 假设从后端获取的数据是
       const res = {
@@ -91,27 +91,30 @@
       // 回显
       this.form.address = {
         detail,
-        area: [res.provinceCode, res.cityCode, res.countyCode],
+        area: [ res.provinceCode, res.cityCode, res.countyCode ],
         areaObj: res,
       }
       // 显示模式
       this.form2.address = {
         detail,
-        area: [res.provinceCode, res.cityCode, res.countyCode],
+        area: [ res.provinceCode, res.cityCode, res.countyCode ],
         areaObj: res,
       }
     }
+
     public changeAddress (val: any) {
       console.log(val, '改变地址之后')
     }
+
     public switchStatus () {
       const status = this.schema[0].props.disabled
       setProperty(this.schema, 'address', {
         props: {
-          disabled: !status
-        }
+          disabled: !status,
+        },
       })
     }
+
     public submitForm () {
       (this.$refs.form as any).$refs.form.validate((valid: boolean) => {
         if (valid) {

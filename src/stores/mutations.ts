@@ -1,6 +1,7 @@
 import { State } from '@/stores/states'
 import { Menu } from '@/components/common-menu/menu.model'
-import { dic, getUser, setMenuFlag, setMenus, toggleLangSetting } from '@/stores/mutation-types'
+import { dic, getUser, setCache, setMenuFlag, setMenus, toggleLangSetting } from '@/stores/mutation-types'
+import { HttpRes } from '@/models/common/models'
 
 export default {
   [toggleLangSetting] (state: State, setting: boolean) {
@@ -18,5 +19,18 @@ export default {
   },
   [getUser] (state: State, user: any) {
     state.user = user
+  },
+  // 当需要清除缓存时，需要调用清除缓存的方法
+  [setCache] (state: State, cacheData: { url: string, params: any, result: HttpRes }) {
+    const cacheObj = state.cache[cacheData.url]
+    if (cacheObj) {
+      cacheObj.params = cacheData.params
+      cacheObj.result = cacheData.result
+    } else {
+      state.cache[cacheData.url] = {
+        params: cacheData.params,
+        result: cacheData.result,
+      }
+    }
   },
 }

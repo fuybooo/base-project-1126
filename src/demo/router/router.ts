@@ -16,10 +16,12 @@ import VueCropperDemo from '@/demo/views/vue-cropper/VueCropperDemo.vue'
 import RouterParams from '@/demo/views/router-params/RouterParams.vue'
 import ButtonDemo from '@/demo/views/button/Button.vue'
 import RemoteSelectDemo from '@/demo/views/remote-select/RemoteSelectDemo.vue'
+import MultipleRemoteSelectDemo from '@/demo/views/remote-select/MultipleRemoteSelectDemo.vue'
 import BaseLayoutDemo from '@/demo/views/layout/base-layout-demo.vue'
 import WangeditorDemo from '@/demo/views/wangeditor/WangeditorDemo.vue'
 import ChartsDemo from '@/demo/views/charts/ChartsDemo.vue'
 import AddressDemo from '@/demo/views/address/Address.vue'
+import UploadDemo from '@/demo/views/upload/UploadDemo.vue'
 
 const demoRouter: ProRouteConfig = {
   path: '/demo',
@@ -149,6 +151,14 @@ const demoRouter: ProRouteConfig = {
       },
     },
     {
+      path: 'multipleRemoteSelect',
+      name: 'demo-multipleRemoteSelect',
+      component: MultipleRemoteSelectDemo,
+      meta: {
+        title: '多个远程选择器',
+      },
+    },
+    {
       path: 'layout',
       name: 'demo-layout',
       component: BaseLayoutDemo,
@@ -178,6 +188,14 @@ const demoRouter: ProRouteConfig = {
       component: AddressDemo,
       meta: {
         title: 'address示例',
+      },
+    },
+    {
+      path: 'upload',
+      name: 'demo-upload',
+      component: UploadDemo,
+      meta: {
+        title: '上传demo',
       },
     },
   ],

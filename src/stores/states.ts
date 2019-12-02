@@ -8,6 +8,7 @@ export interface State {
   menuFlag: string
   dic: DicType
   user: User
+  cache: any
 }
 
 const state: State = {
@@ -16,5 +17,6 @@ const state: State = {
   menuFlag: '',
   dic: {},
   user: {},
+  cache: {},
 }
 export default state

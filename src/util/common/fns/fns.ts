@@ -3,6 +3,8 @@
  * @date 2019-06-17
  */
 import { FRAMEWORK_KEY_LIST } from '@/models/project/local-storage-keys/keys'
+import { composeList } from '@/util/common/fns/fns-array'
+import pinyin from 'pinyin'
 
 // 简化localStorage.getItem的写法
 export function lg (key: string): string {
@@ -166,6 +168,29 @@ export function deepTrim (obj: any, filterNone = false, onlyClone = false) {
 export function deepClone (obj: any) {
   return deepTrim(obj, false, true)
 }
+// 深比较
+export function deepCompare (a: any, b: any) {
+  const aProps = Object.getOwnPropertyNames(a)
+  const bProps = Object.getOwnPropertyNames(b)
+  if (aProps.length !== bProps.length) {
+    return false
+  }
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < aProps.length; i++) {
+    const item = aProps[i]
+    const aValueItem = a[item]
+    const bValueItem = b[item]
+    if (typeof aValueItem === 'object') {
+      const itemResult = deepCompare(aValueItem, bValueItem)
+      if (!itemResult) {
+        return false
+      }
+    } else if (aValueItem !== bValueItem) {
+      return false
+    }
+  }
+  return true
+}
 
 export function isEmptyObject (obj: any) {
   if (typeof obj === 'object' && obj && !Array.isArray(obj)) {
@@ -291,5 +316,13 @@ export function moneyToNumber (moneyString: string | number) {
     return parseFloat((moneyString + '').replace(/[^\d.-]/g, ''))
   } else {
     return moneyString
+  }
+}
+
+// 根据文本获取拼音
+export function getPy (label: string = '') {
+  return {
+    pinyinNormal: composeList(pinyin(label, {style: pinyin.STYLE_NORMAL, heteronym: true})),
+    pinyinFirstLetter: composeList(pinyin(label, {style: pinyin.STYLE_FIRST_LETTER, heteronym: true})),
   }
 }

@@ -1,5 +1,3 @@
-import { requiredRule } from '@/util/common/fns/fns-form'
-
 export interface Address {
   area: string[]
   areaObj: {
@@ -12,9 +10,11 @@ export interface Address {
   },
   detail: string
 }
+
 export function formatAddress (address: Address) {
-  return `${address.areaObj.provinceName}${address.areaObj.cityName || ''}${address.areaObj.countyName || ''}${address.detail}`
+  return `${ address.areaObj.provinceName }${ address.areaObj.cityName || '' }${ address.areaObj.countyName || '' }${ address.detail }`
 }
+
 // tslint:disable-next-line:ban-types
 export function addressRequiredFn (rule: any, value: any, callback: Function) {
   if (!value) {
@@ -25,10 +25,11 @@ export function addressRequiredFn (rule: any, value: any, callback: Function) {
     callback()
   }
 }
+
 export const addressRequiredRuleProp = {
   formItemProps: {
     rules: [
-      {validator: addressRequiredFn, trigger: ['change', 'blur']}
+      { validator: addressRequiredFn, trigger: [ 'change', 'blur' ] },
     ],
   },
 }

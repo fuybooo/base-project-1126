@@ -21,6 +21,9 @@ const closeStatic = isProd()
 const openStatic = false
 // 文件路径
 const fileUrl = ''
+// shangyi
+const uploadUrl = 'http://devglobal.everjiankang.com.cn/api/global-platform/phoneMapping/uploadAndCreatePhoneInfo'
+// xiangrikui
 export default {
   /**
    * 这里的配置可以使得在不方便改代码进行调试时，可以在浏览器控制台输入相应的代码进行路径的切换
@@ -33,4 +36,5 @@ export default {
   closeStatic,
   openStatic,
   fileUrl,
+  uploadUrl,
 }

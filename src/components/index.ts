@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import '@/components/common-form/BaseForm'
 import '@/components/common-table/BaseTable'
-// import '@/components/common-select/BaseRemoteSelect'
 import '@/components/common-view-html/BaseViewHtml'
 import BaseMenu from '@/components/common-menu/BaseMenu'
 import BaseAction from '@/components/common-action-button/BaseAction.vue'

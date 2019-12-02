@@ -20,6 +20,7 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+
   const E = require('wangeditor')
 
   @Component({})
@@ -27,6 +28,7 @@
     public editorContent = ''
     public editor: any
     public editorDisabled = false
+
     public created () {
       this.$nextTick(() => {
         this.editor = new E(this.$refs.info)
@@ -34,19 +36,24 @@
         this.editor.create()
       })
     }
+
     public getContent () {
       this.editorContent = this.editor.txt.html()
       console.log(this.editorContent)
     }
+
     public setContent () {
       this.editor.txt.html(`<p>设置的内容</p>`)
     }
+
     public appendContent () {
       this.editor.txt.append(`<p>追加的内容</p>`)
     }
+
     public clearContent () {
       this.editor.txt.clear()
     }
+
     public switchDisabled () {
       this.editorDisabled = !this.editorDisabled
       this.editor.$textElem.attr('contenteditable', !this.editorDisabled)

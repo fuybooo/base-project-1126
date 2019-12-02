@@ -1,7 +1,6 @@
 import { Menu } from '@/components/common-menu/menu.model'
 import { ProRouteConfig } from '@/models/project/route/route.model'
 import { defaultTitle } from '@/models/project/models'
-import { mainRoute } from '@/router/main.router'
 import demoRoute from '@/demo/router/router'
 import { convertListToTree } from '@/util/common/fns/fns-tree'
 

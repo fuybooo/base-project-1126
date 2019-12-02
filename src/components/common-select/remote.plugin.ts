@@ -1,5 +1,6 @@
-import { debounce } from '@/util/common/fns/fns'
-
+import { debounce, getPy } from '@/util/common/fns/fns'
+import { listDestValue } from '@/util/common/fns/fns-array'
+import { positionList } from '@/models/project/models'
 export function getConfig () {
   // @ts-ignore
   const me = this
@@ -7,6 +8,21 @@ export function getConfig () {
     searchKey: me.searchKey,
     labelKey: me.labelKey,
     valueKey: me.valueKey,
+    handleOptions (options: any[]) {
+      return options
+    },
+  }
+  if (me.showAll) {
+    config.handleOptions = (options: any[]) => {
+      return [
+        {
+          id: '-1',
+          name: '全部',
+          ...getPy('全部'),
+        },
+        ...options
+      ]
+    }
   }
   switch (me.type) {
     // 员工

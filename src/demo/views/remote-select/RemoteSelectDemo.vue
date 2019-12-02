@@ -69,32 +69,43 @@
         </div>
         <div class="demo-line">
           <p>使用场景：选择外教</p>
-          <div class="demo-value">{{ value31 }}</div>
+          <div class="demo-value">{{ value32 }}</div>
           <base-remote-select
             :fixed-params="{position: '3'}"
             @change="changeSelect"
             type="staff"
-            v-model="value31"
+            v-model="value32"
           ></base-remote-select>
         </div>
         <div class="demo-line">
           <p>使用场景：选择助教</p>
-          <div class="demo-value">{{ value31 }}</div>
+          <div class="demo-value">{{ value33 }}</div>
           <base-remote-select
             :fixed-params="{position: '4'}"
             @change="changeSelect"
             type="staff"
-            v-model="value31"
+            v-model="value33"
           ></base-remote-select>
         </div>
         <div class="demo-line">
           <p>使用场景：选择补课老师</p>
-          <div class="demo-value">{{ value31 }}</div>
+          <div class="demo-value">{{ value34 }}</div>
           <base-remote-select
             :fixed-params="{position: '3,4'}"
             @change="changeSelect"
             type="staff"
-            v-model="value31"
+            v-model="value34"
+          ></base-remote-select>
+        </div>
+        <div class="demo-line">
+          <p>使用场景：选择班级</p>
+          <p class="black-4">使用场景：选择班级时，有"全部"选项，对应的值为 -1</p>
+          <div class="demo-value">{{ value35 }}</div>
+          <base-remote-select
+            @change="changeSelect"
+            show-all
+            type="class"
+            v-model="value35"
           ></base-remote-select>
         </div>
       </div>
@@ -144,6 +155,10 @@
     public value22: any[] = [ '1', '2' ]
     public value23: any[] = [ '1', '2' ]
     public value31: any = ''
+    public value32: any = ''
+    public value33: any = ''
+    public value34: any = ''
+    public value35: any = ''
     public staffValue = '1'
     public url = this.$urls.staff.queryStaffList
     public staffList = []

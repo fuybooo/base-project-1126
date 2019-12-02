@@ -25,6 +25,7 @@
 <script lang="ts">
   import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
   import './BaseCropper.less'
+
   const VueCropper = require('vue-cropper').VueCropper
 
   @Component({ components: { VueCropper } })
