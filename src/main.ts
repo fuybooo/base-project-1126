@@ -15,7 +15,6 @@ import '@/util/common/vue-prototype/vue-prototype'
 import '@/components/index'
 // 导入业务方法
 import '@/util/project/biz/index'
-// tslint:disable-next-line:no-var-requires
 Vue.use(ElementUI, { zIndex: 3000 })
 Vue.component('v-chart', ECharts)
 Vue.config.productionTip = false

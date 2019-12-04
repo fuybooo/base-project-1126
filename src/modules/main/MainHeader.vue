@@ -12,7 +12,7 @@
       <span @click="openMessage" class="yygf-nomessage mr20 cp" title="消息中心"></span>
       <span @click="openPersonal" class="cp mr20" title="个人中心">
         <img alt="头像" class="tx-img" src="../../assets/img/user.png">
-        <span class="black-2">Kevin.S</span>
+        <span class="black-2">Fuybooo</span>
       </span>
       <span @click="logout" class="yygf-letitgo cp" title="退出"></span>
     </el-col>

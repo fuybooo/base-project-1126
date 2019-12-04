@@ -44,15 +44,20 @@ Vue.component('BaseForm', {
     formProps.labelWidth = this.formProps.labelWidth || getDefaultLabelWidth.bind(this)()
     formProps.labelPosition = this.formProps.labelPosition || 'right'
     const formItems: VNodeChildren = createFormItems.bind(this)(createElement)
-    if (this.showBtn) {
-      if (this.inline && this.showSearchBtn) {
-        // @ts-ignore
-        formItems.push(createInlineBtnItem.bind(this)(createElement))
-      }
-      if (this.showCreateBtn) {
-        // @ts-ignore
-        formItems.push(createBtnItem.bind(this)(createElement))
-      }
+    // if (this.showBtn) {
+    //   if (this.inline && this.showSearchBtn) {
+    //     // @ts-ignore
+    //     formItems.push(createInlineBtnItem.bind(this)(createElement))
+    //   }
+    //   if (this.showCreateBtn) {
+    //     // @ts-ignore
+    //     formItems.push(createBtnItem.bind(this)(createElement))
+    //   }
+    // }
+    const btnItem = createBtnItem.bind(this)(createElement)
+    if (btnItem) {
+      // @ts-ignore
+      formItems.push(btnItem)
     }
     return createElement(
       'el-form',
@@ -67,36 +72,36 @@ Vue.component('BaseForm', {
   methods: {},
   watch: {
     // 当其变更为true时说明赋值操作已经完成
-    formChangeDone: {
-      handler () {
-        const me: any = this
-        me.isEdited = false
-        me.originValue = deepClone(me.value)
-      },
-    },
-    value: {
-      handler () {
-        const me: any = this
-        me.isEdited = true
-      },
-      deep: true,
-    },
-    $route: {
-      handler (crtRoute) {
-        const me = this
-        debounce(() => {
-          if (me.autoRouter) {
-            me.$emit('update:formPattern', crtRoute.params.pattern)
-          }
-        }, 100)()
-      },
-      deep: true,
-    },
+    // formChangeDone: {
+    //   handler () {
+    //     const me: any = this
+    //     me.isEdited = false
+    //     me.originValue = deepClone(me.value)
+    //   },
+    // },
+    // value: {
+    //   handler () {
+    //     const me: any = this
+    //     me.isEdited = true
+    //   },
+    //   deep: true,
+    // },
+    // $route: {
+    //   handler (crtRoute) {
+    //     const me = this
+    //     debounce(() => {
+    //       if (me.autoRouter) {
+    //         me.$emit('update:formPattern', crtRoute.params.pattern)
+    //       }
+    //     }, 100)()
+    //   },
+    //   deep: true,
+    // },
   },
   data () {
     return {
-      isEdited: false,
-      originValue: null,
+      // isEdited: false,
+      // originValue: null,
     }
   },
   props: {
@@ -112,7 +117,7 @@ Vue.component('BaseForm', {
     // 是否为栅格化表单
     isRow: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     span: {
       type: [ Number, String ],
@@ -120,17 +125,21 @@ Vue.component('BaseForm', {
     },
     inline: {
       type: Boolean,
+      default: false,
+    },
+    useDefaultBtnStyle: {
+      type: Boolean,
       default: true,
     },
     // 是否显示base-form自定义的按钮，若为true，则按钮事件也是默认的
     showBtn: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 是否显示默认的查询和重置按钮
     showSearchBtn: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     showResetBtn: {
       type: Boolean,
@@ -172,12 +181,12 @@ Vue.component('BaseForm', {
     // auto change route
     autoRouter: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 表单是否已经赋值完成，用于控制哪些数据变更是赋值操作，哪些是用户操作
     formChangeDone: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     // 当页面编辑时，填写了编辑内容后又点击了取消时的操作
     leaveEdited: {
@@ -484,106 +493,106 @@ function setExtraValue (item: Schema, val: any) {
   }
 }
 
-function createInlineBtnItem (createElement: typeof Vue.prototype.$createElement) {
-  // @ts-ignore
-  const me = this
-  return me.$slots.searchBtn || createElement('el-form-item', {
-    class: 'fr',
-  }, [
-    createElement('el-button', {
-      props: {
-        type: 'border',
-        size: 'large',
-      },
-      nativeOn: {
-        click () {
-          me.$emit('search')
-          setProp.bind(me.value)(UUID_KEY, guid())
-        },
-      },
-    }, '查询'),
-    me.showResetBtn ?
-      createElement('el-button', {
-        nativeOn: {
-          click () {
-            me.$refs.form.resetFields()
-            setFormData(me.value, {}, true)
-            setProp.bind(me.value)(UUID_KEY, guid())
-            me.$emit('reset')
-          },
-        },
-      }, '重置') : null,
-  ])
-}
+// function createInlineBtnItem (createElement: typeof Vue.prototype.$createElement) {
+//   // @ts-ignore
+//   const me = this
+//   return me.$slots.searchBtn || createElement('el-form-item', {
+//     class: 'fr',
+//   }, [
+//     createElement('el-button', {
+//       props: {
+//         type: 'border',
+//         size: 'large',
+//       },
+//       nativeOn: {
+//         click () {
+//           me.$emit('search')
+//           setProp.bind(me.value)(UUID_KEY, guid())
+//         },
+//       },
+//     }, '查询'),
+//     me.showResetBtn ?
+//       createElement('el-button', {
+//         nativeOn: {
+//           click () {
+//             me.$refs.form.resetFields()
+//             setFormData(me.value, {}, true)
+//             setProp.bind(me.value)(UUID_KEY, guid())
+//             me.$emit('reset')
+//           },
+//         },
+//       }, '重置') : null,
+//   ])
+// }
 
 function createBtnItem (createElement: typeof Vue.prototype.$createElement) {
   // @ts-ignore
   const me: any = this
   if (me.$slots.default) {
-    return me.$slots.default
+    return me.useDefaultBtnStyle ? createElement('el-col', {}, [createElement('el-form-item', {}, [me.$slots.default])]) : me.$slots.default
   }
-  const btnFormItem = createElement('el-form-item', { class: me.btn.class || (me.inline ? 'fr mr0i' : '') }, [ createElement('el-button', {
-    props: {
-      type: me.btn.type || 'primary',
-    },
-    // 绑定确定事件
-    nativeOn: {
-      click () {
-        // 从编辑切换为显示状态 默认行为
-        if (me.formPattern === 'view') {
-          if (me.autoRouter) {
-            me.$router.replace({
-              name: me.$route.name,
-              params: { ...(me.$route.params || {}), pattern: 'edit' },
-            })
-          }
-          // 刚刚点击编辑，用户还来不及对数据进行修改，所以此时表单应该是未编辑状态
-          me.isEdited = false
-          me.$emit('update:formPattern', 'edit')
-        } else {
-          me.$emit(me.inline ? 'create' : me.formPattern === 'view' ? 'edit' : 'submit')
-        }
-      },
-    },
-  }, [ me.btn.text || (me.inline ? '创建' : me.formPattern === 'view' ? '编辑' : '保存') ]), ...(me.inline ? [] : (me.formPattern === 'view' ? [] : [ createElement('el-button', {
-    // 绑定取消事件
-    nativeOn: {
-      click () {
-        if (me.formPattern === 'edit') {
-          // 如果页面被编辑过，则进行询问
-          if (me.isEdited) {
-            confirmLeave.bind(me)().then(() => {
-              if (me.leaveEdited) {
-                me.leaveEdited()
-              } else {
-                // defaultLeaveEdited.bind(me)()
-                goBack.bind(me)()
-              }
-            }).catch(() => {
-            })
-          } else {
-            // leaveEdit.bind(me)()
-            goBack.bind(me)()
-          }
-        } else if (me.formPattern === 'create') {
-          if (me.isEdited) {
-            confirmLeave.bind(me)().then(() => {
-              goBack.bind(me)()
-            }).catch(() => {
-            })
-          } else {
-            me.isEdited = false
-            goBack.bind(me)()
-          }
-        } else if (me.formPattern === 'view') {
-          // 直接返回
-          goBack.bind(me)()
-          me.isEdited = false
-        }
-      },
-    },
-  }, me.formPattern === 'view' ? '返回' : '取消') ])) ])
-  return me.isRow ? [ createElement('el-col', {}, [ btnFormItem ]) ] : btnFormItem
+  // const btnFormItem = createElement('el-form-item', { class: me.btn.class || (me.inline ? 'fr mr0i' : '') }, [ createElement('el-button', {
+  //   props: {
+  //     type: me.btn.type || 'primary',
+  //   },
+  //   // 绑定确定事件
+  //   nativeOn: {
+  //     click () {
+  //       // 从编辑切换为显示状态 默认行为
+  //       if (me.formPattern === 'view') {
+  //         if (me.autoRouter) {
+  //           me.$router.replace({
+  //             name: me.$route.name,
+  //             params: { ...(me.$route.params || {}), pattern: 'edit' },
+  //           })
+  //         }
+  //         // 刚刚点击编辑，用户还来不及对数据进行修改，所以此时表单应该是未编辑状态
+  //         me.isEdited = false
+  //         me.$emit('update:formPattern', 'edit')
+  //       } else {
+  //         me.$emit(me.inline ? 'create' : me.formPattern === 'view' ? 'edit' : 'submit')
+  //       }
+  //     },
+  //   },
+  // }, [ me.btn.text || (me.inline ? '创建' : me.formPattern === 'view' ? '编辑' : '保存') ]), ...(me.inline ? [] : (me.formPattern === 'view' ? [] : [ createElement('el-button', {
+  //   // 绑定取消事件
+  //   nativeOn: {
+  //     click () {
+  //       if (me.formPattern === 'edit') {
+  //         // 如果页面被编辑过，则进行询问
+  //         if (me.isEdited) {
+  //           confirmLeave.bind(me)().then(() => {
+  //             if (me.leaveEdited) {
+  //               me.leaveEdited()
+  //             } else {
+  //               // defaultLeaveEdited.bind(me)()
+  //               goBack.bind(me)()
+  //             }
+  //           }).catch(() => {
+  //           })
+  //         } else {
+  //           // leaveEdit.bind(me)()
+  //           goBack.bind(me)()
+  //         }
+  //       } else if (me.formPattern === 'create') {
+  //         if (me.isEdited) {
+  //           confirmLeave.bind(me)().then(() => {
+  //             goBack.bind(me)()
+  //           }).catch(() => {
+  //           })
+  //         } else {
+  //           me.isEdited = false
+  //           goBack.bind(me)()
+  //         }
+  //       } else if (me.formPattern === 'view') {
+  //         // 直接返回
+  //         goBack.bind(me)()
+  //         me.isEdited = false
+  //       }
+  //     },
+  //   },
+  // }, me.formPattern === 'view' ? '返回' : '取消') ])) ])
+  // return me.isRow ? [ createElement('el-col', {}, [ btnFormItem ]) ] : btnFormItem
 }
 
 function getFormControlClassType (item: Schema) {
@@ -625,42 +634,42 @@ function getClassName (item: Schema, prefix = 'base-form-control') {
   return ` ${ prefix } ${ item.prop ? (prefix + '-' + item.prop) : '' } ${ prefix }-${ classType.type }${ classType.fixedHeight ? ` ${ prefix }-fixed-height` : '' }`
 }
 
-function confirmLeave () {
-  // @ts-ignore
-  const me = this
-  return me.$confirm('离开页面将会丢失未保存的数据，请确认是否离开', '确认提示')
-}
+// function confirmLeave () {
+//   // @ts-ignore
+//   const me = this
+//   return me.$confirm('离开页面将会丢失未保存的数据，请确认是否离开', '确认提示')
+// }
 
-function leaveEdit () {
-  // @ts-ignore
-  const me = this
-  if (me.autoRouter) {
-    me.$router.replace({
-      name: me.$route.name,
-      params: { ...(me.$route.params || {}), pattern: 'view' },
-    })
-    me.$emit('update:formPattern', 'view')
-  }
-  me.$emit('cancel', 'edit')
-  me.isEdited = false
-}
+// function leaveEdit () {
+//   // @ts-ignore
+//   const me = this
+//   if (me.autoRouter) {
+//     me.$router.replace({
+//       name: me.$route.name,
+//       params: { ...(me.$route.params || {}), pattern: 'view' },
+//     })
+//     me.$emit('update:formPattern', 'view')
+//   }
+//   me.$emit('cancel', 'edit')
+//   me.isEdited = false
+// }
 
 // 该方法中originValue的值来源于 formChangeDone 属性的设置
-function defaultLeaveEdited () {
-  // @ts-ignore
-  const me = this
-  setFormData(me.value, me.originValue)
-  me.$emit('update:formPattern', 'view')
-  // 取消编辑，发送事件之后，在外部进行跳转逻辑，并且重新给form赋值
-  me.$emit('cancel', 'edited')
-}
-
-function goBack () {
-  // @ts-ignore
-  const me = this
-  me.$router.push({ name: me.$route.meta.parentName, query: (me.isFromQuery ? me.$route.query : me.fromQuery) })
-  // me.$router.back()
-}
+// function defaultLeaveEdited () {
+//   // @ts-ignore
+//   const me = this
+//   setFormData(me.value, me.originValue)
+//   me.$emit('update:formPattern', 'view')
+//   // 取消编辑，发送事件之后，在外部进行跳转逻辑，并且重新给form赋值
+//   me.$emit('cancel', 'edited')
+// }
+//
+// function goBack () {
+//   // @ts-ignore
+//   const me = this
+//   me.$router.push({ name: me.$route.meta.parentName, query: (me.isFromQuery ? me.$route.query : me.fromQuery) })
+//   // me.$router.back()
+// }
 
 function getDefaultLabelWidth () {
   // @ts-ignore

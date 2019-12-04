@@ -16,6 +16,7 @@
         :url="url"
         @after-search="afterSearch"
         ref="table"
+        @view="viewDetail"
       >
         <template v-slot:address="{row}">
           <span>{{row.address}}</span>
@@ -150,6 +151,9 @@
         props: {
           width: columnWidth.w260,
         },
+        content: {
+          type: 'event',
+        }
       },
       {
         prop: 'address',
@@ -287,6 +291,9 @@
     public resize () {
       // 如有必要，则重新计算表格高度
       (this.$refs.table as any).resize()
+    }
+    public viewDetail ({row}: any) {
+      console.log(row, this, '触发事件')
     }
   }
 </script>

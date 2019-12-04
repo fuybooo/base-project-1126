@@ -5,12 +5,14 @@
   "scripts": {
     "s": "vue-cli-service serve",
     "b": "yarn l&&export mode=prod&&vue-cli-service build",
-    "l": "vue-cli-service lint"
+    "l": "vue-cli-service lint",
+    "precommit": "yarn l"
   },
   "scripts-info": {
     "s": "启动前端服务",
     "b": "打包前端代码",
-    "l": "检查前端代码格式"
+    "l": "检查前端代码格式",
+    "precommit": "git commit之前会执行 yarn l，如果校验不通过，停止commit"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -38,8 +40,8 @@
     "webpack-merge": "^4.2.2"
   },
   "devDependencies": {
-    "@types/echarts": "^4.4.1",
     "@types/chai": "^4.2.4",
+    "@types/echarts": "^4.4.1",
     "@types/mocha": "^5.2.7",
     "@types/pinyin": "^2.8.1",
     "@vue/cli-plugin-babel": "^4.0.5",
@@ -50,8 +52,10 @@
     "@vue/cli-service": "^4.0.5",
     "@vue/test-utils": "1.0.0-beta.29",
     "chai": "^4.2.0",
+    "husky": "^3.1.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "pre-commit": "^1.2.2",
     "typescript": "^3.6.4",
     "vue-template-compiler": "^2.6.10"
   }

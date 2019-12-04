@@ -1,6 +1,7 @@
 import { ProRouteConfig } from '@/models/project/route/route.model'
 import Demo from '@/demo/views/Demo.vue'
 import BaseFormDemo from '@/demo/views/form/BaseFormDemo.vue'
+import AppFormDemo from '@/demo/views/form/AppFormDemo.vue'
 import Checkbox from '@/demo/views/checkbox/Checkbox.vue'
 import SlotFormDemo from '@/demo/views/form/SlotFormDemo.vue'
 import BaseTableDemo from '@/demo/views/table/BaseTableDemo.vue'
@@ -22,6 +23,8 @@ import WangeditorDemo from '@/demo/views/wangeditor/WangeditorDemo.vue'
 import ChartsDemo from '@/demo/views/charts/ChartsDemo.vue'
 import AddressDemo from '@/demo/views/address/Address.vue'
 import UploadDemo from '@/demo/views/upload/UploadDemo.vue'
+import TsxDemo1 from '@/demo/views/tsx/tsx1'
+import BaseTableOtherRequest from '@/demo/views/table/BaseTableOtherRequest.vue'
 
 const demoRouter: ProRouteConfig = {
   path: '/demo',
@@ -34,6 +37,14 @@ const demoRouter: ProRouteConfig = {
       component: BaseFormDemo,
       meta: {
         title: '基础表单示例',
+      },
+    },
+    {
+      path: 'app-form',
+      name: 'demo-app-form',
+      component: AppFormDemo,
+      meta: {
+        title: 'AppForm示例',
       },
     },
     {
@@ -58,6 +69,14 @@ const demoRouter: ProRouteConfig = {
       component: BaseTableDemo,
       meta: {
         title: '基础表格示例',
+      },
+    },
+    {
+      path: 'base-table-other-request',
+      name: 'demo-base-table-other-request',
+      component: BaseTableOtherRequest,
+      meta: {
+        title: '请求特殊接口示例',
       },
     },
     {
@@ -196,6 +215,14 @@ const demoRouter: ProRouteConfig = {
       component: UploadDemo,
       meta: {
         title: '上传demo',
+      },
+    },
+    {
+      path: 'tsx1',
+      name: 'demo-tsx-1',
+      component: TsxDemo1,
+      meta: {
+        title: 'tsx的写法1',
       },
     },
   ],

@@ -8,7 +8,7 @@ import { KEY_CAMPUS_ID, KEY_OPEN_STATIC, KEY_STATIC_INCLUDE, KEY_TOKEN } from '@
 import { isDev, isProd } from '@shared/env'
 import { setCache } from '@/stores/mutation-types'
 
-function create (customOptions?: any, options?: any): AxiosInstance {
+export function create (customOptions?: any, options?: any): AxiosInstance {
   const localAxios = axios.create({
     baseURL: config.baseURL,
     withCredentials: true,

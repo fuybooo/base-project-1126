@@ -18,6 +18,7 @@ import BaseCropper from '@/components/common-cropper/BaseCropper.vue'
 import BaseRadioInput from '@/components/common-radio-input/BaseRadioInput.vue'
 import BaseRemoteSelect from '@/components/common-select/BaseRemoteSelect.vue'
 import BaseAddress from '@/components/common-address/BaseAddress.vue'
+import AppForm from '@/components/common-form/AppForm'
 
 // 注册全局组件
 Vue.component('AppLangSetting', LangSetting)
@@ -36,3 +37,5 @@ Vue.component('BaseCropper', BaseCropper)
 Vue.component('BaseRadioInput', BaseRadioInput)
 Vue.component('BaseRemoteSelect', BaseRemoteSelect)
 Vue.component('BaseAddress', BaseAddress)
+// 第二个版本的form
+Vue.component('AppForm', AppForm)

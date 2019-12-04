@@ -146,7 +146,7 @@ Vue.component('BaseTable', {
       // 根据不同项目，获取不同的参数，不影响base-table的原有逻辑
       params = getParamsByProject(params)
       // 分页 防抖 滚动加载
-      me.$req(me.url, params).then((res: HttpRes) => {
+      me.$req(me.url, params, me.useCache, me.method, me.axiosInst).then((res: HttpRes) => {
         if (res.code === 200) {
           // 改变remoteData之后会自动执行render
           me.innerLoading = false
@@ -296,6 +296,17 @@ Vue.component('BaseTable', {
       type: Boolean,
       default: false,
     },
+    useCache: {
+      type: Boolean,
+      default: false,
+    },
+    method: {
+      type: String,
+      default: 'post',
+    },
+    axiosInst: {
+      type: Function,
+    }
   },
 })
 
@@ -589,8 +600,9 @@ function getContentEvent (type: ContentType, col: Column, props: any) {
       break
     case 'event':
       eventObj.click = () => {
+        // me.$emit('event', { ...props, event: col.content.event || 'view' }, col)
         // @ts-ignore
-        me.$emit('event', { ...props, event: col.content.event || 'view' }, col)
+        me.$emit(col.content.event || 'view', props, col)
       }
       break
   }
