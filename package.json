@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "s": "vue-cli-service serve",
-    "b": "yarn l&&export mode=prod&&vue-cli-service build",
+    "b": "export mode=prod&&vue-cli-service build",
     "ls": "lite-server",
     "l": "vue-cli-service lint",
     "precommit": "yarn l"
