@@ -3,6 +3,8 @@
   "files": [
     "./**/*.{html,htm,css,js}"
   ],
+  "open": false,
+  "logLevel": "silent",
   "server": {
     "baseDir": "./dist"
   }

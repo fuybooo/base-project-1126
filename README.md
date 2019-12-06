@@ -85,3 +85,7 @@
             localStorage.removeItem('BP_FE_STATIC_INCLUDE')
         ```
     8. 启动tomcat之后，浏览器访问地址 协议 + 域名（ip） + 端口  + /login
+## 2019-12-05
+1. 增加一个代码规范的强校验
+    1. yarn s 启动时，控制台会打印当前不符合规范的条目，但是不会报错，可以正常启动，因为现在是编码阶段，可能用用到console
+    2. git commit 代码时，会自动执行 yarn l ，执行成功之后才会执行commit 否则，不执行，即，commit之前必须保证代码的规范性
